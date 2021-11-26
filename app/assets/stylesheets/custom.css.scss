@@ -1,0 +1,11 @@
+.flash {
+  text-align: center;
+  font-family: 'Helvetica Neue';
+  font-weight: bolder;
+  .notice {
+    color: green;
+  }
+  .alert {
+    color: red;
+  }
+}

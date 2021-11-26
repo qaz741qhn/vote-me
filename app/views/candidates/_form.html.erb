@@ -1,0 +1,24 @@
+<%= form_with(model: @candidate, local: true) do |f| %>
+
+  <p>
+      <%= f.label :name %><br/>
+      <%= f.text_field :name %>
+  </p>
+  <p>
+      <%= f.label :party %><br/>
+      <%= f.text_field :party, placeholder: "Enter your party" %>
+  </p>
+  <p>
+      <%= f.label :age %><br/>
+      <%= f.number_field :age, in: 30..70, placeholder: "Enter your age" %>
+  </p>
+  <p>
+      <%= f.label :politics %><br/>
+      <%= f.text_area :politics, placeholder: "Write your politics" %>
+  </p>
+  <p>
+      <%= f.submit(@candidate.new_record? ? "Create candidate" : "Update candidate") %>
+  </p>
+
+<% end %>
+<%= link_to 'return to all candidates', candidates_path, class:"return-link" %>
