@@ -1,4 +1,4 @@
-<h1><%= @candidate.name %>'s details</h1>
+<h1><%= @candidate.name %>'s Profile</h1>
   <div class="block">
     <table class="profile">
       <thead>
@@ -17,5 +17,6 @@
       </tbody>
     </table>
   </div>
-
+<%= link_to "Edit", edit_candidate_path %>
+<%= link_to "Delete", candidate_path(@candidate), method: :delete, data: { confirm: "Are you sure?" } %>
 <%= link_to 'All Candidates', candidates_path %>

@@ -1,6 +1,7 @@
 class CandidatesController < ApplicationController
 
   before_action :no_user_redirect, only: [:show]
+  before_action :set_candidate, only:[:show, :edit, :update, :destroy]
 
   def index
     @candidates = Candidate.all
@@ -22,7 +23,29 @@ class CandidatesController < ApplicationController
   end
 
   def show
-    @candidate = Candidate.find_by(id: params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @candidate.update(candidate_params)
+      flash[:notice] = "#{@candidate.name}'s profile is updated"
+      redirect_to(candidate_path)
+    else
+      flash.now[:alert] = "Invalid information"
+      render('new')
+    end
+  end
+
+  def destroy
+    if @candidate.destroy
+      flash[:notice] = "#{@candidate.name}'s profile is deleted"
+      redirect_to(candidates_path)
+    else
+      flash.now[:alert] = "Cannot delete #{@candidate.name}'s profile"
+      redirect_to(candidate_path)
+    end
   end
 
   private
@@ -33,9 +56,13 @@ class CandidatesController < ApplicationController
 
   def no_user_redirect
     unless exist_user
-      flash[:alert] = "No user found"
+      flash[:alert] = "User Not Found"
       redirect_to(candidates_path)
     end
+  end
+
+  def set_candidate
+    @candidate = Candidate.find_by(id: params[:id])
   end
 
 end
