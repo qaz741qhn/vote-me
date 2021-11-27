@@ -5,21 +5,15 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Party</th>
-        <th>Age</th>
-        <th>Politics</th>
       </tr>
     </thead>
     <tbody>
       <% @candidates.each do |candidate| %>
       <tr>
         <td><%= candidate.id %></td>
-        <td><%= candidate.name %></td>
-        <td><%= candidate.party %></td>
-        <td><%= candidate.age %></td>
-        <td><%= candidate.politics %></td>
-      </tr>
+        <td><%= link_to candidate.name, candidate_path(candidate) %></td>
       <% end %>
+      </tr>
     </tbody>
   </table>
 </div>

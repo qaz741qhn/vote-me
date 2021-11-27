@@ -1,0 +1,21 @@
+<h1><%= @candidate.name %>'s details</h1>
+  <div class="block">
+    <table class="profile">
+      <thead>
+        <tr>
+          <th>Party</th>
+          <th>Age</th>
+          <th>Politics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @candidate.party %></td>
+          <td><%= @candidate.age %></td>
+          <td><%= @candidate.politics %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<%= link_to 'All Candidates', candidates_path %>
