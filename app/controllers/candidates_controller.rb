@@ -34,7 +34,7 @@ class CandidatesController < ApplicationController
       redirect_to(candidate_path)
     else
       flash.now[:alert] = "Invalid information"
-      render('new')
+      render('edit')
     end
   end
 
