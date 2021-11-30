@@ -3,18 +3,23 @@
   <table class="profile">
     <thead>
       <tr>
+        <th>Vote</th>
         <th>ID</th>
         <th>Name</th>
         <th>Action</th>
+        <th></th>
+        <th>Votes</th>
       </tr>
     </thead>
     <tbody>
       <% @candidates.each do |candidate| %>
       <tr>
+        <td><%= link_to 'Vote', vote_candidate_path(candidate), method: :post %></td>
         <td><%= candidate.id %></td>
         <td><%= link_to candidate.name, candidate_path(candidate) %></td>
         <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
         <td><%= link_to 'Delete', candidate_path(candidate), method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= candidate.vote_logs.size %></td>
       </tr>
       <% end %>
     </tbody>

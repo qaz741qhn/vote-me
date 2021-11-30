@@ -1,7 +1,7 @@
 class CandidatesController < ApplicationController
 
   before_action :no_user_redirect, only: [:show]
-  before_action :set_candidate, only:[:show, :edit, :update, :destroy]
+  before_action :set_candidate, only:[:show, :edit, :update, :destroy, :vote]
 
   def index
     @candidates = Candidate.all
@@ -46,6 +46,12 @@ class CandidatesController < ApplicationController
       flash.now[:alert] = "Cannot delete #{@candidate.name}'s profile"
       redirect_to(candidate_path)
     end
+  end
+
+  def vote
+    @candidate.vote_logs.create(ip_address: request.remote_ip)
+    flash[:notice] = "You have voted to #{@candidate.name}."
+    redirect_to(candidates_path)
   end
 
   private
