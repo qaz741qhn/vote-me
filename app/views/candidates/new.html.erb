@@ -1,13 +1,4 @@
 <h1>Add Candidate</h1>
 
-<% if @candidate.errors.any? %>
-  <ul>
-  <% @candidate.errors.full_messages.each do |msg| %>
-    <li class="error-msg">
-      <%= msg %>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
-
-<%= render 'form' %>
+<%= render 'form', candidate: @candidate %>
+<%# 將實體變數抽離partial file，讓partial file不必主動去找實體變數，在這裡決定partial file呈現的內容 %>

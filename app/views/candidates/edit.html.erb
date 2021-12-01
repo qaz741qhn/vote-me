@@ -1,13 +1,3 @@
 <h1>Edit Candidate</h1>
 
-<% if @candidate.errors.any? %>
-  <ul>
-  <% @candidate.errors.full_messages.each do |msg| %>
-    <li class="error-msg">
-      <%= msg %>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
-
-<%= render 'form' %>
+<%= render 'form', candidate: @candidate %>
