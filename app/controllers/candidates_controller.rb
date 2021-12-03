@@ -50,6 +50,7 @@ class CandidatesController < ApplicationController
 
   def vote
     @candidate.vote_logs.create(ip_address: request.remote_ip)
+    VoteMailJob.perform_later
     flash[:notice] = "You have voted to #{@candidate.name}."
     redirect_to(candidates_path)
   end
